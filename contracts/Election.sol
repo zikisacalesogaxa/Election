@@ -34,10 +34,10 @@ contract Election {
 
     function vote (uint _candidateId) public {
         // address has never voted
-        require(!voters[msg.sender]);
+        require(!voters[msg.sender], "already voted!");
 
         // validate voter
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
+        require(_candidateId > 0 && _candidateId <= candidatesCount, "voter does not exist");
 
         // record voter has voted
         voters[msg.sender] = true;
